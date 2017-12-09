@@ -21,6 +21,10 @@ before_action :authenticate_admin
     end
   end
 
+  def show
+    @restaurant = Restaurant.find(params[:id])
+  end
+
 
   private
 
