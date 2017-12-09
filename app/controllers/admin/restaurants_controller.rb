@@ -21,7 +21,8 @@ before_action :authenticate_admin
     end
   end
 
-  before_action :set_restaurant, only: [:show, :edit, :update]
+  before_action :set_restaurant, only: [:show, :edit, :update, :destroy]
+  
   def show
   end
 
@@ -37,6 +38,12 @@ before_action :authenticate_admin
       render :edit
       flash[:alert] = "restaurant was failed to update"
     end
+  end
+
+  def destroy
+    @restaurant.destroy
+    redirect_to admin_restaurants_path
+    flash[:alert] = "restaurant was deleted"
   end
 
   private
