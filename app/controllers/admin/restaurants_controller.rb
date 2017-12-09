@@ -21,10 +21,23 @@ before_action :authenticate_admin
     end
   end
 
+  before_action :set_restaurant, only: [:show, :edit, :update]
   def show
-    @restaurant = Restaurant.find(params[:id])
   end
 
+  def edit
+  end
+
+  def update
+    if @restaurant.update(restaurant_params)
+      redirect_to admin_restaurants_path(@restaurant)
+      flash[:notice] = "restaurant was successfully updated"
+    else
+      # 重新呼叫
+      render :edit
+      flash[:alert] = "restaurant was failed to update"
+    end
+  end
 
   private
 
@@ -32,5 +45,9 @@ before_action :authenticate_admin
   # 在讀取表單資料時，基於安全考量，必須在參數傳入時多做一層處理，術語叫做 Strong Parameters，Rails 4 以上的版本強制要求加入此程序。
   def restaurant_params
     params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description)
+  end
+
+  def set_restaurant
+    @restaurant = Restaurant.find(params[:id])
   end
 end
