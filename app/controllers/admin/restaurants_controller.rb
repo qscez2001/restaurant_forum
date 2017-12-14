@@ -52,7 +52,7 @@ before_action :authenticate_admin
 
   # 在讀取表單資料時，基於安全考量，必須在參數傳入時多做一層處理，術語叫做 Strong Parameters，Rails 4 以上的版本強制要求加入此程序。
   def restaurant_params
-    params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description, :image)
+    params.require(:restaurant).permit(:name, :opening_hours, :tel, :address, :description, :image, :category_id)
   end
 
   def set_restaurant
