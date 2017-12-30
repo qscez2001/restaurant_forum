@@ -25,4 +25,10 @@
     <hr>
 
   </div>
+
+  <%= form_for [@restaurant, @comment] do |f| %>
+    <%= f.text_area :content, placeholder: "留個言吧", class: "form-control" %>
+    <%= f.submit class: "btn btn-primary" %>
+    <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+  <% end %>
 </div>
