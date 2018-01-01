@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  validates_presence_of :name
+  
   has_many :comments
   mount_uploader :avatar, AvatarUploader
   has_many :restaurants, through: :comments
