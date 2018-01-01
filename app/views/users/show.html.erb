@@ -25,13 +25,23 @@
           <% end %>
         </div>
         <div class="clearfix"></div>
-        
-        <% @commented_restaurants.each do |restaurant| %>
-          <div class="my-restaurant">
-            <%= link_to restaurant.name, restaurant_path(restaurant) %>
-            <%= image_tag restaurant.image %>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @commented_restaurants.count %>已評論餐廳</h3>
           </div>
-        <% end %>
+          <div class="panel-body">
+            <% @commented_restaurants.each do |restaurant| %>
+            <%= link_to restaurant_path(restaurant) do %>
+              <div class="my-restaurant">
+                <%= restaurant.name %> 
+                <div>
+                <%= image_tag restaurant.image, class: "img-responsive img-rounded"%>
+                </div>
+              </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
       </div>
 
       <br>
