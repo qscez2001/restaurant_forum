@@ -25,7 +25,13 @@
           <% end %>
         </div>
         <div class="clearfix"></div>
-
+        
+        <% @commented_restaurants.each do |restaurant| %>
+          <div class="my-restaurant">
+            <%= link_to restaurant.name, restaurant_path(restaurant) %>
+            <%= image_tag restaurant.image %>
+          </div>
+        <% end %>
       </div>
 
       <br>
