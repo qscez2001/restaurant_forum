@@ -14,6 +14,7 @@ Rails.application.routes.draw do
       get :dashboard
     end
   end
+  
   resources :categories, only: [:show]
   resources :users, only: [:show, :edit, :update]
   root "restaurants#index"
