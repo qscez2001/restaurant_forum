@@ -6,4 +6,7 @@ class Restaurant < ApplicationRecord
   belongs_to :category
   # 加上 dependent: :destroy，這樣一來，以後刪除 Restaurant 時，就可以一併刪掉關聯的評論
   has_many :comments, dependent: :destroy
+
+  has_many :favorites, dependent: :destroy
+  has_many :favorited_users, through: :favorites, source: :user
 end
