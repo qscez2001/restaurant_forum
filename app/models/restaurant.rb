@@ -10,6 +10,9 @@ class Restaurant < ApplicationRecord
   has_many :favorites, dependent: :destroy
   has_many :favorited_users, through: :favorites, source: :user
 
+  has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
+
   # 我們在 Restaurant class 裡宣告了一個 instance method，
   # 因此這個方法需要被串接在 Restaurant 實例之後使用；
   # 另外，也需要傳入 User 物件，才有足夠的資料在 favorites table 上進行查詢。
