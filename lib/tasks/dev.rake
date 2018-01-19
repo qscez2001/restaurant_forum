@@ -1,4 +1,6 @@
 namespace :dev do
+
+  
   task fake_restaurant: :environment do
     Restaurant.destroy_all
 
@@ -43,4 +45,5 @@ namespace :dev do
     puts "have created fake comments"
     puts "now you have #{Comment.count} comment data"
   end
+
 end
