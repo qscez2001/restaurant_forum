@@ -4,13 +4,7 @@
     <li>
       <%= user.name %>
       
-      <% if user != current_user %>
-        <% if current_user.following?(user)%>
-          <%= link_to 'Unfollow', followship_path(user), method: :delete %>
-        <% else %>
-          <%= link_to 'Follow', followships_path(following_id: user), method: :post %>
-        <% end %>
-      <% end %>
+      <%= render partial: "shared/follow", locals: { user: user } %>
       
       <!-- followships_path 是 followships#create 對應的網址 Helper，
         我們在這個 Helper 後傳入一筆參數 following_id: user
