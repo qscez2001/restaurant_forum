@@ -14,4 +14,11 @@ class FollowshipsController < ApplicationController
     end
   end
 
+  def destroy
+    # 在這裡，你無法使用 find 方法，因為 find 方法只能用主鍵 id 查詢，而 following_id 不是主鍵。
+    @followship = current_user.followships.where(following_id: params[:id]).first
+    @followship.destroy
+    flash[:alert] = "Followship destroyed"
+    redirect_back(fallback_location: root_path)
+  end
 end

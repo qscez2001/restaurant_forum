@@ -7,6 +7,7 @@
         我們在這個 Helper 後傳入一筆參數 following_id: user
         （也可以寫成 following_id: user.id，不過只要寫入物件，Rails 會自動抓取主鍵的 value）。 -->
       <%= link_to 'Follow', followships_path(following_id: user), method: :post %>
+      <%= link_to 'Unfollow', followship_path(user), method: :delete %>
     </li>
   <% end %>
 
