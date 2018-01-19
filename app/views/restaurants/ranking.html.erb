@@ -24,24 +24,28 @@
   <div class="row">
 
     <div class="col-md-10 col-md-offset-1">
-      <h1>Top 10 人氣餐聽</h1>
-      <hr>
-      <div class="panel panel-default">
-          <div class="panel-body">
-            <% @hot_restaurants.each do |restaurant| %>
-              <div>
-                <h4>
-                  <%= link_to restaurant.name, restaurant_path(restaurant) %>
-                  <!-- <small><%= restaurant.category.name %></small> -->
-                  <small><%= restaurant.favorites_count %></small>
-                </h4>
-                <p><%= truncate(restaurant.description, length: 80) %></p>
-                <hr>
-              </div>
-            <% end %>
-          </div>
-        
+      <div class="page-header">
+        <h1>Top 10 人氣餐廳 <small>(收藏數最高)</small></h1>
       </div>
+
+        <% @hot_restaurants.each do |restaurant| %>
+          <div class="ranking-item">
+            <div class="col-md-3">
+              <%= image_tag restaurant.image %>
+            </div>
+              <div class="col-md-9">
+                <h4><%= restaurant.name %>
+                <span class="label label-default">收藏數：<%= restaurant.favorites_count %></span>
+                </h4>
+                <p><%= truncate(restaurant.description, length: 200) %></p>
+                <div>
+                  <%= link_to 'Show', restaurant_path(restaurant), class: "btn btn-primary" %>
+                  <%= render partial: 'shared/favorite', locals: { restaurant: restaurant } %>
+                </div>
+              </div>
+            <div class="clearfix"></div>
+          </div>
+        <% end %>
     </div>
   </div>
 </div>
