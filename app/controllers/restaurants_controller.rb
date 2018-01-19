@@ -40,8 +40,8 @@ class RestaurantsController < ApplicationController
 
   def unlike
     @restaurant = Restaurant.find(params[:id])
-    favorites = Favorite.where(restaurant: @restaurant, user: current_user)
-    favorites.destroy_all
+    likes = Like.where(restaurant: @restaurant, user: current_user)
+    likes.destroy_all
     redirect_back(fallback_location: root_path)
   end
 
