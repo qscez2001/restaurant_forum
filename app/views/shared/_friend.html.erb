@@ -1,0 +1,13 @@
+<!-- followships_path 是 followships#create 對應的網址 Helper，
+        我們在這個 Helper 後傳入一筆參數 following_id: user
+        （也可以寫成 following_id: user.id，不過只要寫入物件，Rails 會自動抓取主鍵的 value）。 -->
+
+<% if user != current_user %>
+  <% if current_user.friending?(user)%>
+    <!-- 會用 DELETE 動作導向 http://localhost:3000/followships/{user.id} -->
+    <%= link_to 'Unfriend', friendship_path(user), method: :delete ,class: "btn btn-link" %>
+  <% else %>
+    <!-- 會用 POST 動作導向 http://localhost:3000/followships?following_id={user.id} -->
+    <%= link_to 'Friend', friendships_path(friending_id: user), method: :post , class: "btn btn-default" %>
+  <% end %>
+<% end %>
