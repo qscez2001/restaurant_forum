@@ -20,8 +20,14 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_restaurants, through: :likes, source: :restaurant
   
+  # 讓 User 可以找到他追蹤的人
   has_many :followships, dependent: :destroy
   has_many :followings, through: :followships
+
+  # 讓 User 可以找到他的追蹤者
+  has_many :inverse_followships, class_name: "Followship", foreign_key: "following_id"
+  has_many :followers, through: :inverse_followships, source: :user
+
   def admin?
     self.role == "admin"
   end

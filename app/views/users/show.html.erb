@@ -27,7 +27,7 @@
         <div class="clearfix"></div>
         <div class="panel panel-default">
           <div class="panel-heading">
-            <h3 class="panel-title"><%= @commented_restaurants.count %>已評論餐廳</h3>
+            <h3 class="panel-title"><%= @commented_restaurants.count %> 已評論餐廳</h3>
           </div>
           <div class="panel-body">
             <% @commented_restaurants.each do |restaurant| %>
@@ -36,6 +36,60 @@
                 <%= restaurant.name %> 
                 <div>
                 <%= image_tag restaurant.image, class: "img-responsive img-rounded"%>
+                </div>
+              </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @favorited_restaurants.count %> 已收藏餐廳</h3>
+          </div>
+          <div class="panel-body">
+            <% @favorited_restaurants.each do |restaurant| %>
+            <%= link_to restaurant_path(restaurant) do %>
+              <div class="my-restaurant">
+                <%= restaurant.name %> 
+                <div>
+                <%= image_tag restaurant.image, class: "img-responsive img-rounded"%>
+                </div>
+              </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @followings.count %> followings</h3>
+          </div>
+          <div class="panel-body">
+            <% @followings.each do |user| %>
+            <%= link_to user_path(user) do %>
+              <div class="my-restaurant">
+                <%= user.name %> 
+                <div>
+                <%= image_tag user.avatar, class: "img-responsive img-rounded"%>
+                </div>
+              </div>
+            <% end %>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title"><%= @followers.count %> followers</h3>
+          </div>
+          <div class="panel-body">
+            <% @followers.each do |user| %>
+            <%= link_to user_path(user) do %>
+              <div class="my-restaurant">
+                <%= user.name %> 
+                <div>
+                <%= image_tag user.avatar, class: "img-responsive img-rounded"%>
                 </div>
               </div>
             <% end %>
