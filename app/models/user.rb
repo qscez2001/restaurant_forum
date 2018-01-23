@@ -48,4 +48,8 @@ class User < ApplicationRecord
     self.friendings.include?(user)
   end
 
+  def all_friends(user)
+    self.friendings(user)
+    self.frienders(user)
+  end
 end
