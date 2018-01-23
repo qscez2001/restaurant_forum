@@ -25,6 +25,13 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def friend_list
+    @user = User.find(params[:id])
+    # @friendings = @user.friendings
+    # @frienders = @user.frienders
+    @all_friends = (@user.friendings + @user.frienders).uniq
+  end
+
   private
 
   def user_params
