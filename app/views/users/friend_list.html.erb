@@ -1,17 +1,24 @@
-<h1>friends</h1>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title"><%= @all_friends.count %></strong> friends </h3>
-  </div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
 
-  <ul class="list-group">
-    <% @all_friends.each do |all_friends| %>
-    <li class="list-group-item">
-      <%= link_to user_path(all_friends) do %>
-      <img class="img-circle" src="http://via.placeholder.com/30x30">
-      <%= all_friends.name %>
-      <% end %>
-    </li>
-    <% end %>
-  </ul>
+      <h1>friends</h1>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title"><%= @all_friends.count %></strong> friends </h3>
+        </div>
+
+        <ul class="list-group">
+          <% @all_friends.each do |all_friends| %>
+          <li class="list-group-item">
+            <%= link_to user_path(all_friends) do %>
+            <img class="img-circle" src="http://via.placeholder.com/30x30">
+            <%= all_friends.name %>
+            <% end %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
 </div>
